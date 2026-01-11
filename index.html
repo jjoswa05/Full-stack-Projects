@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0de0529c5f.js" crossorigin="anonymous"></script>
+    <script src="./javas.js"></script>
+    <link rel="icon" href="./images/titlepage logo.png" type="image/png">
+    
+    <style>
+        :root {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: Body, Quicksand, sans-serif;
+            margin: 0;
+        }
+
+        section {
+            margin-top: 5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        strong {
+            background-color: lightgrey;
+            font-weight: bold;
+            padding: .4rem;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .horizontal-list {
+            padding: 0;
+            margin-top: 0;
+        }
+
+        .horizontal-list li {
+            display: inline-block;
+            margin-right: 1rem;
+            font-size: .9rem;
+        }
+
+        .blue-bold {
+            padding: .4rem;
+            background-color: #213d77;
+            font-weight: bold;
+            color: white;
+        }
+
+        .blue-bold a {
+            color: white;
+        }
+
+        /* ------- header ------ */
+
+        #main-header {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            height: 11vh;
+            width: 100vw;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+        }
+
+        #main-header img {
+            height: 95%;
+            width: auto;
+        }
+
+        #img1 {
+            margin-left: -3rem;
+        }
+
+        #img2 {
+            margin-right: -3rem;
+        }
+
+        #linklists {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ---------ticket-booking section--------- */
+
+        #ticket-booking {
+            margin-top: 7rem;
+            background-image: url("data:image/jpeg;base64,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");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: space-around;
+            height: 40rem;
+        }
+
+        #form {
+            margin-top: 3rem;
+            width: 43vw;
+        }
+
+        /* adapted from #form main for .booking-section */
+        #form .booking-section {
+            background-color: #ffffff;
+            margin-bottom: 0;
+        }
+
+        #form > header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #form > header div {
+            width: 47.5%;
+            font-size: .9rem;
+        }
+
+        #form > header div span {
+            display: inline-block;
+        }
+
+        #form > header div i {
+            margin-left: -8rem;
+            font-size: 1.4rem;
+        }
+
+        #form .booking-section header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #form .booking-section h2 {
+            color: #2f4677;
+            font-size: 2rem;
+        }
+
+        #form .booking-section form div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .leftbox {
+            width: 50%;
+            height: 1.6rem;
+            margin: 1rem;
+            color: #082b71;
+        }
+
+        .rightbox {
+            width: 35%;
+            height: 1.6rem;
+            margin: 1rem;
+            color: #082b71;
+        }
+
+        input::placeholder {
+            color: #082b71;
+        }
+
+        input[type="checkbox"] {
+            margin-left: 1.5rem;
+            margin-right: .7rem;
+            margin-top: .5rem;
+            cursor: pointer;
+            transform: scale(1.5);
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #checkboxes {
+            color: #082b71;
+            font-weight: 550;
+            font-size: .9rem;
+            font-family: quicksand;
+        }
+
+        button {
+            border: none;
+            height: 1.9rem;
+            color: white;
+            border-radius: .3rem;
+            font-weight: bold;
+            margin: 2rem 2rem;
+        }
+
+        button[type="submit"] {
+            background-color: #fb792b;
+            width: 6rem;
+            cursor: pointer;
+        }
+
+        button[type="button"] {
+            background-color: #01bb0a;
+            width: 15rem;
+        }
+
+        button[type="button"] span:hover {
+            text-decoration: underline;
+            color: #007ad9;
+            cursor: pointer;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        select option {
+            cursor: pointer;
+            color: black;
+            font-weight: lighter;
+            font-size: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        select option:hover {
+            background-color: lightgrey;
+        }
+
+        #note {
+            margin-top: .1rem;
+            background-color: #ffffff;
+        }
+
+        #note #p1 {
+            color: red;
+            font-size: x-small;
+            line-height: 1rem;
+            font-weight: bold;
+        }
+
+        #note #p2 {
+            color: rgb(0, 0, 255);
+            font-size: x-small;
+            font-weight: bold;
+        }
+
+        #ticket-booking-heading {
+            color: #213d77;
+        }
+
+        #ticket-booking-heading h1 {
+            margin-top: 1rem;
+            font-weight: 700;
+            font-size: 3.2rem;
+        }
+
+        #ticket-booking-heading h2 {
+            margin-left: 15%;
+            margin-top: -2.4rem;
+            font-weight: normal;
+        }
+    </style>
+    <title>IRCTC Next Generation eTicketing System</title>
+</head>
+<body>
+    <header id="main-header">
+        <div id="img1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa6og5xCJmOC2n6vxBu8Opz5i1iDDWTgGwbg&s" alt="irctc logo">
+        </div>
+
+        <div id="linklists">
+            <div id="links1">
+                <ul class="horizontal-list center">
+                    <li class="blue-bold"><a href="#">LOGIN</a></li>
+                    <li><a href="https://www.irctc.co.in/nget/profile/user-registration">REGISTER</a></li>
+                    <li><a href="https://agent.irctc.co.in/nget/train-search">AGENT LOGIN</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                    <li><a href="#">ASK DISHA</a></li>
+                    <li><a href="https://www.irctc.co.in/nget/enquiry/alerts"><strong>ALERTS</strong></a></li>
+                    <li>
+                        <span id="datetime" style="font-weight: bold;"></span>
+                    </li>
+                </ul>
+            </div>
+
+                <ul id="links2" class="horizontal-list">
+    
+
+    <li><span>IRCTC EXCLUSIVE</span></li>
+    <li><span>TRAINS</span></li>
+    <li><span>BUSES</span></li>
+    <li><span>FLIGHTS</span></li>
+    <li><span>HOTELS</span></li>
+    <li><span>HOLIDAYS</span></li>
+    <li><span>LOYALTY</span></li>
+    <li><span>MEALS</span></li>
+    <li><span>PROMOTIONS</span></li>
+    <li><span>MORE</span></li>
+</ul>
+
+
+        
+    </header>
+
+    <main>
+        <section id="ticket-booking">
+            <div id="form">
+                <header>
+                    <div id="pnr-status" class="blue-bold center">
+                        <span id="i-span"><i class="fa-solid fa-clipboard-check"></i></span>
+                        <span id="text">
+                            <a href="https://www.indianrail.gov.in/enquiry/PNR/PnrEnquiry.html?locale=en" target="_blank">PNR STATUS</a>
+                        </span>
+                    </div>
+                    <div id="charts" class="blue-bold center">
+                        <span><i class="fa-sharp fa-solid fa-clipboard-list"></i></span>
+                        <span>
+                            <a href="https://www.irctc.co.in/online-charts/" target="_blank">CHARTS/VACANCY</a>
+                        </span>
+                    </div>
+                </header>
+
+                <section class="booking-section">
+                    <header>
+                        <h2> BOOK TICKET</h2>
+                        <img src="https://www.irctc.co.in/nget/assets/images/G20_Logo.png" alt="g2 logo">
+                    </header>
+
+                    <form method="get" action="#">
+                        <div>
+                            <input id="from" name="from" type="text" placeholder="From" class="leftbox" autofocus>
+                            <input id="date" name="date" type="date" class="rightbox">
+                            <input id="to" name="to" type="text" placeholder="To" class="leftbox">
+
+                            <select id="class" name="class" class="rightbox">
+                                <option value="all" selected>All Classes</option>
+                                <option value="anubhuti">Anubhuti Class (EA)</option>
+                                <option value="1A">AC First Class (1A)</option>
+                                <option value="EV">Vistadome AC (EV)</option>
+                                <option value="EC">Exec. Chair Car (EC)</option>
+                                <option value="2A">AC 2 Tier (2A)</option>
+                                <option value="FC">First Class (FC)</option>
+                                <option value="3A">AC 3 Tier (3A)</option>
+                                <option value="3E">AC 3 Economy (3E)</option>
+                                <option value="VC">Vistadome Chair Car (VC)</option>
+                                <option value="CC">AC Chair Car (CC)</option>
+                                <option value="SL">Sleeper (SL)</option>
+                                <option value="VS">Vistadome Non AC (VS)</option>
+                                <option value="2S">Second Sitting (2S)</option>
+                            </select>
+
+                            <select id="quota" name="quota" class="leftbox">
+                                <option value="general" selected>GENERAL</option>
+                                <option value="ladies">LADIES</option>
+                                <option value="lower-berth">LOWER BERTH/SR.CITIZEN</option>
+                                <option value="pwd">PERSON WITH DISABILITY</option>
+                                <option value="tatkal">TATKAL</option>
+                                <option value="premium-tatkal">PREMIUM TATKAL</option>
+                            </select>
+                        </div>
+
+                        <div id="checkboxes">
+                            <label>
+                                <input id="pwd-concession" name="pwd-concession" type="checkbox" value="pwd-concession">
+                                Person With Disability Concession
+                            </label>
+                            <label>
+                                <input id="flexi-date" name="flexi-date" type="checkbox" value="flexi-date">
+                                Flexible With Date
+                            </label>
+                            <br>
+                            <label>
+                                <input id="berth-available" name="berth-available" type="checkbox" value="berth-available">
+                                Train With Available Berth
+                            </label>
+                            <label>
+                                <input id="railway-pass" name="railway-pass" type="checkbox" value="railway-pass">
+                                Railway Pass Concession
+                            </label>
+                            <br>
+
+                            <div id="buttons">
+                                <button type="submit">Search</button>
+                                <button type="button">
+                                    <span>Try booking in Ask DISHA 2.0</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <div id="note">
+                    <p id="p1">
+                        Customers are requested to contact only on IRCTC's authorised contact no./Email id
+                        (Contact No.:14646 OR 0755-6610661 / 0755-4090600, Email: care@irctc.co.in), for assistance
+                        regarding ticket booking, refund or forgot user-id/password. Beware of fraudulent sites offering assistance.
+                    </p>
+                    <p id="p2">
+                        Please check the alert section regarding restoration of AC 3-tier economy fare.
+                    </p>
+                </div>
+            </div>
+
+            <div id="ticket-booking-heading">
+                <h1>INDIAN RAILWAYS</h1>
+                <h2>Safety | Security | Punctuality</h2>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
